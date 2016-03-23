@@ -25,10 +25,6 @@ respawn limit 5 60
 # make sure directories is there
 pre-start script
     test -e {{ upstart_chdir }} || { stop; exit 0; }
-    mkdir -p {{ upstart_log_directory }}
-    chown {{ upstart_user }}:{{ upstart_group }} {{ upstart_log_directory }}
-    mkdir -p {{ upstart_pidfile_directory }}
-    chown {{ upstart_user }}:{{ upstart_group }} {{ upstart_pidfile_directory }}
 end script
 
 script

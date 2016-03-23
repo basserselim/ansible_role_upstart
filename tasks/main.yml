@@ -1,4 +1,8 @@
 ---
+- name: write prepare conf
+  template: src="/etc/init/prepare.conf.j2" dest="/etc/init/prepare-{{ upstart-name }}.conf"
+  become: yes
+  
 - name: write upstart conf
-  template: src="etc/init/upstart.conf.j2" dest='/etc/init/{{ upstart_name }}.conf'
+  template: src="etc/init/upstart.conf.j2" dest="/etc/init/{{ upstart_name }}.conf"
   become: yes

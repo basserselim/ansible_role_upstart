@@ -1,0 +1,9 @@
+start on starting {{ upstart_name }}
+
+task
+
+PIDDIR={{ upstart_pidfile_directory }}
+LOGDIR={{ upstart_log_directory }}
+
+exec install -o {{ upstart_user }} -g {{ upstart_group }} -d $PIDDIR
+exec install -o {{ upstart_user }} -g {{ upstart_group }} -d $LOGDIR
