@@ -27,21 +27,19 @@ Example Playbook
 
     - hosts: servers
       roles:
-         - { 
-             role: basserselim.upstart
-             upstart_name: node-app
-             upstart_description: "service for node-app"
-             upstart_command: "node app.js"
-             upstart_chdir: "/var/www/node-app"
-             upstart_user: www-data
-             upstart_group: www-data
-             upstart_env:
-                - NODE_ENV: production
-             upstart_log_directory: "/var/log/node-app"
-             upstart_log_filename: "output.log"
-             upstart_pidfile_directory: "/var/run/node-app"
-             upstart_pidfile_filename: "node-app.pid"
-           }
+        - role: basserselim.upstart
+          upstart_name: node-app
+          upstart_description: "service for node-app"
+          upstart_command: "node app.js"
+          upstart_chdir: "/var/www/node-app"
+          upstart_user: www-data
+          upstart_group: www-data
+          upstart_env:
+            - NODE_ENV: "production"
+          upstart_log_directory: "/var/log/node-app"
+          upstart_log_filename: "output.log"
+          upstart_pidfile_directory: "/var/run/node-app"
+          upstart_pidfile_filename: "node-app.pid"
 
 License
 -------
