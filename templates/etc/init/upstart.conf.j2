@@ -3,8 +3,8 @@ description "{{ upstart_description }}"
 author "Michael Nientiedt <m.nientiedt@iexergy.com>"
 
 {% if upstart_env is iterable %}
-    {% for env_var in upstart_env %}
-        env {{ env_var.name }}={{ env_var.value }}
+    {% for env_key, env_value in upstart_env.iteritems() %}
+        env {{ env_key }}={{ env_value }}
     {% endfor %}
 {% endif %}
 

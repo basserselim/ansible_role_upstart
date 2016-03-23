@@ -1,4 +1,4 @@
 ---
 - name: write upstart conf
-  template: src=upstart.conf.j2 dest='/etc/init/{{ upstart_name }}.conf'
+  template: src="etc/init/upstart.conf.j2" dest='/etc/init/{{ upstart_name }}.conf'
   become: yes

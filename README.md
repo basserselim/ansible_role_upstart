@@ -35,7 +35,7 @@ Example Playbook
           upstart_user: www-data
           upstart_group: www-data
           upstart_env:
-            - NODE_ENV: "production"
+            NODE_ENV: "production"
           upstart_log_directory: "/var/log/node-app"
           upstart_log_filename: "output.log"
           upstart_pidfile_directory: "/var/run/node-app"
