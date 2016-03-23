@@ -1,0 +1,14 @@
+---
+upstart_name: upstart-service
+upstart_description: "Start and stop {{ upstart_name }}"
+upstart_command: no
+upstart_chdir: "/var/run/{{ upstart_name }}"
+upstart_log_directory: "/var/log/{{ upstart_name }}"
+upstart_log_filename: "output.log"
+upstart_log_path: "{{ upstart_log_directory }}/{{ upstart_log_filename }}"
+upstart_user: nobody
+upstart_group: nogroup
+upstart_env: []
+upstart_pidfile_directory: "/var/run/{{ upstart_name }}"
+upstart_pidfile_filename: "{{ upstart_name }}.pid"
+upstart_pidfile_path: "{{ upstart_pidfile_directory }}/{{ upstart_pidfile_filename }}"

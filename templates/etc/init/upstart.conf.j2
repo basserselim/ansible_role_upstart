@@ -1,0 +1,46 @@
+# {{ ansible_managed }}
+description "{{ upstart_description }}"
+author "Michael Nientiedt <m.nientiedt@iexergy.com>"
+
+{% if upstart_env is iterable %}
+    {% for env_var in upstart_env %}
+        env {{ env_var.name }}={{ env_var.value }}
+    {% endfor %}
+{% endif %}
+
+setuid {{ upstart_user }}
+setgid {{ upstart_group }}
+
+# Make sure network and fs is up, and start in runlevels 2-5
+start on (net-device-up
+          and local-filesystems
+          and runlevel [2345])
+# Stop in runlevels 0,1 and 6
+stop on runlevel [016]
+
+# automatically respawn, but if its respwaning too fast (5 times in 60 seconds, don't do that)
+respawn
+respawn limit 5 60
+
+# make sure directories is there
+pre-start script
+    test -e {{ upstart_chdir }} || { stop; exit 0; }
+    mkdir -p {{ upstart_log_directory }}
+    chown {{ upstart_user }}:{{ upstart_group }} {{ upstart_log_directory }}
+    mkdir -p {{ upstart_pidfile_directory }}
+    chown {{ upstart_user }}:{{ upstart_group }} {{ upstart_pidfile_directory }}
+end script
+
+script
+    chdir {{ upstart_chdir }}
+    exec  {{ upstart_command }} >> {{ upstart_log_path }}
+end script
+
+post-start script
+    PID=`status {{ upstart_name }} | egrep -oi '([0-9]+)$' | head -n1`
+    echo $PID > {{ upstart_pidfile_path }}
+end script
+
+post-stop script
+    rm -f {{ upstart_pidfile_path }}
+end script
