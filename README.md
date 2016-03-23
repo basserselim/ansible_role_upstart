@@ -9,17 +9,17 @@ Requirements
 
 Role Variables
 --------------
-upstart_name: name of the service
-upstart_description: description of the service
-upstart_chdir: directory where the command should be executed in
-upstart_command: command to start
-upstart_user: user to run as
-upstart_group: group to run as
-upstart_env: list with environemnt variables to set
-upstart_log_directory: directory of logfile
-upstart_log_filename: logfile
-upstart_pidfile_directory: directory for pidfile
-upstart_pidfile_filename: pidfile
+* `upstart_name`: name of the service
+* `upstart_description`: description of the service
+* `upstart_chdir`: directory where the command should be executed in
+* `upstart_command`: command to start
+* `upstart_user`: user to run as
+* `upstart_group`: group to run as
+* `upstart_env`: list with environemnt variables to set
+* `upstart_log_directory`: directory of logfile
+* `upstart_log_filename`: logfile
+* `upstart_pidfile_directory`: directory for pidfile
+* `upstart_pidfile_filename`: pidfile
 
 
 Example Playbook
