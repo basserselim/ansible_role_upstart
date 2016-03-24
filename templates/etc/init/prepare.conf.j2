@@ -1,9 +1,7 @@
+description "prepare directories for {{ upstart_name }}"
 start on starting {{ upstart_name }}
 
 task
 
-PIDDIR={{ upstart_pidfile_directory }}
-LOGDIR={{ upstart_log_directory }}
-
-exec install -o {{ upstart_user }} -g {{ upstart_group }} -d $PIDDIR
-exec install -o {{ upstart_user }} -g {{ upstart_group }} -d $LOGDIR
+exec install -o {{ upstart_user }} -g {{ upstart_group }} -d {{ upstart_pidfile_directory }}
+exec install -o {{ upstart_user }} -g {{ upstart_group }} -d {{ upstart_log_directory }}
