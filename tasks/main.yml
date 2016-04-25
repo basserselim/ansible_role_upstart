@@ -1,4 +1,10 @@
 ---
+- name: create pid directory
+  file: path='{{ upstart_pidfile_directory }}' mode=0775 owner='{{ upstart_user }}' group='{{ upstart_group }}''
+
+- name: create log directory
+  file: path='{{ upstart_log_directory }}' mode=0775 owner='{{ upstart_user }}' group='{{ upstart_group }}''
+
 - name: write prepare conf
   template: src="etc/init/prepare.conf.j2" dest="/etc/init/prepare-{{ upstart_name }}.conf"
   become: yes
